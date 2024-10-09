@@ -1,0 +1,321 @@
+/* General styles */
+/* Maded by Tomás Korzusehec on 25 sep 2024 */
+
+/* Icons */
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css";
+
+/* Fonts */
+@import "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap";
+
+/* Variables */
+:root {
+  --font-montserrat: "Montserrat", sans-serif;
+  --bg-color: #252630;
+  --text-color: #f2f2f2;
+  --btn-color: #4a4b5f;
+  --btn-color-hover: #555668;
+  --input-color: #363742;
+  --input-placeholder-color: #999;
+  --menu-color: #3e4044;
+  --despegable-btn-color: #444654;
+  --alert-text-color: #fa5e55;
+  --alert-text-color-hover: #f2f2f2;
+  --alert-bg-color: #212830;
+  --alert-bg-color-hover: #fa5e55;
+  --acept-bg-color: #238636;
+  --acept-bg-color-hover: #23a03b;
+  --navbar-btn-bg-color: #333;
+  --navbar-btn-text-color: #e2e2e2;
+  --card-bg-color: #333;
+  --card-text-color: #e2e2e2;
+  --navbar-desplegable-btn: #57596d;
+  --navbar-items-color: #000;
+  --navbar-toggle-lines-color: #111;
+}
+
+/* General tags */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: opacity 0.4s;
+  font-family: var(--font-montserrat);
+  scroll-behavior: smooth;
+}
+.main-center {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s;
+}
+
+.div-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+button {
+  cursor: pointer;
+  border: none;
+  font-weight: 600;
+  transition: all 0.4s;
+}
+.btn {
+  border-radius: 10px;
+  padding: 10px;
+  background-color: var(--btn-color);
+  color: var(--text-color);
+}
+.btn-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+/* Forms */
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 20px;
+  background-color: var(--menu-color);
+  border-radius: 5px;
+}
+.form-title {
+  font-size: 1.75em;
+}
+.inputs-container {
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+}
+.input {
+  padding: 12.5px 10px;
+  outline: none;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--input-color);
+  color: var(--text-color);
+  border: 1px #ffffff60 solid;
+  font-size: 0.875em;
+  width: 100%;
+}
+.input::placeholder {
+  color: var(--input-placeholder-color);
+}
+.form-btn {
+  margin-top: 5px;
+  width: 100%;
+}
+.already-account-p {
+  font-size: 1em;
+  font-weight: 500;
+}
+.already-account-btn {
+  background-color: transparent;
+  padding: 0;
+  font-size: 1em;
+  margin-left: 5px;
+  color: #ffffff90;
+  font-weight: 500;
+}
+
+/* Blur */
+.back-drop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  min-height: 100vh;
+  transition: filter 0.4s;
+  z-index: -1;
+}
+.blur {
+  filter: blur(5px);
+  pointer-events: none;
+}
+
+/* Menus to use */
+/* Interactive menus */
+.desplegable-menu {
+  border-radius: 10px;
+  padding: 20px;
+  background-color: var(--menu-color);
+  position: fixed;
+  transform: translate(-50%, 700%);
+  top: 50%;
+  left: 50%;
+  transition: all 0.4s;
+}
+.show-desplegable-menu {
+  transform: translate(-50%, -50%);
+}
+.desplegable-button {
+  top: 15px;
+  left: 15px;
+  position: fixed;
+  border-radius: 100%;
+  padding: 12.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s;
+  background-color: var(--despegable-btn-color);
+  color: var(--text-color);
+  font-size: 1.25em;
+}
+
+/* Only read menus */
+.alert-menu {
+  border-radius: 10px;
+  padding: 20px;
+  background-color: var(--menu-color);
+  position: fixed;
+  bottom: 30px;
+  right: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 5px;
+  transition: transform 0.4s;
+  transform: translate(400%, 0%);
+}
+.show-alert-menu {
+  transform: translate(0%, 0%);
+}
+
+/* type of buttons */
+.accept-btn {
+  background-color: var(--acept-bg-color);
+}
+.cancel-btn {
+  background-color: var(--alert-bg-color);
+  color: var(--alert-text-color);
+}
+
+/* Animations */
+.fade-in {
+  animation: fadeIn 0.4s forwards;
+}
+.fade-out {
+  animation: fadeOut 0.4s forwards;
+}
+.fade-left {
+  animation: fadeLeft 0.4s forwards;
+}
+.fade-right {
+  animation: fadeRight 0.4s forwards;
+}
+.fade-up {
+  animation: fadeUp 0.4s forwards;
+}
+.fade-down {
+  animation: fadeDown 0.4s forwards;
+}
+.fade-up-on-center {
+  animation: fadeUpOnCenter 0.4s forwards;
+}
+.fade-down-on-center {
+  animation: fadeDownOnCenter 0.4s forwards;
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeLeft {
+  from {
+    transform: translateX(-400%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes fadeRight {
+  from {
+    transform: translateX(400%);
+  }
+  to {
+    transform-origin: translateX(0);
+  }
+}
+@keyframes fadeUp {
+  from {
+    transform: translateY(400%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes fadeDown {
+  from {
+    transform: translateY(-400%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes fadeUpOnCenter {
+  from {
+    transform: translate(-50%, 400%);
+  }
+  to {
+    transform: translate(-50%, -50%);
+  }
+}
+@keyframes fadeDownOnCenter {
+  from {
+    transform: translate(-50%, -400%);
+  }
+  to {
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* mouseover transitions */
+@media (min-width: 1024px) {
+  .btn:hover {
+    background-color: var(--btn-color-hover);
+  }
+  .cancel-btn:hover {
+    color: var(--alert-text-color-hover);
+    background-color: var(--alert-bg-color-hover);
+  }
+  .accept-btn:hover {
+    background-color: var(--acept-bg-color-hover);
+  }
+  .already-account-btn:hover {
+    background-color: transparent;
+    color: var(--text-color);
+  }
+  .desplegable-button:hover {
+    background-color: var(--navbar-desplegable-btn);
+  }
+}
