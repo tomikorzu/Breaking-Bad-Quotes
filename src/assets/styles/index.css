@@ -57,6 +57,12 @@ header {
   align-items: center;
   text-align: center;
 }
+.logo{
+  background-color: #b2b2b2;
+  padding: 20px;
+  border-radius: 100%;
+  width: 200px;
+}
 .title {
   margin-bottom: 5px;
 }
