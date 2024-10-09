@@ -80,6 +80,19 @@ header {
   max-height: 300px;
   overflow-y: auto;
 }
+.search-quote-show::-webkit-scrollbar {
+  width: 5px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #555;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #333;
+}
 .quote-show {
   border-left: 5px solid #999;
   border-radius: 5px;
