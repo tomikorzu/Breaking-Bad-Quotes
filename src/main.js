@@ -16,7 +16,7 @@ const showQuote = (data) => {
   let quote = data[0].quote;
   let author = data[0].author;
 
-  if (!saveQuotes.some(({ quote }) => quote === quote)) {
+  if (!saveQuotes.some(({ quote: savedQuote }) => savedQuote === quote)) {
     quoteText.text(quote);
     authorText.text(author);
   } else {
