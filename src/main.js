@@ -1,18 +1,27 @@
 import $ from "jquery";
+import { userAlert } from "./utils/mainFunctions.js";
 
-const saveQuotes = JSON.parse(localStorage.getItem("quotes")) || [];
+const addBtn = $("#add");
+const deleteBtn = $("#delete");
+const deleteAllBtn = $("#delete-all");
+const searchInput = $(".input-search");
+const searchQuoteShow = $(".search-quote-show");
+const quoteBtn = $("#quote-btn");
+const quoteText = $("#quote");
+const authorText = $("#author");
+
+let saveQuotes = JSON.parse(localStorage.getItem("quotes")) || [];
 
 const showQuote = (data) => {
   let quote = data[0].quote;
   let author = data[0].author;
 
-  if (!saveQuotes.includes(quote)) {
-    saveQuotes.push(quote);
-    localStorage.setItem("quotes", JSON.stringify(saveQuotes));
+  if (!saveQuotes.some(({ quote }) => quote === quote)) {
+    quoteText.text(quote);
+    authorText.text(author);
+  } else {
+    fetchData();
   }
-
-  $("#quote").text(quote);
-  $("#author").text(author);
 };
 
 const fetchData = () => {
@@ -21,14 +30,66 @@ const fetchData = () => {
   });
 };
 
-const deleteQuote = (quote) => {
-  saveQuotes = saveQuotes.filter((item) => item !== quote);
+const deleteQuote = (quoteToDelete) => {
+  saveQuotes = saveQuotes.filter(({ quote }) => quote !== quoteToDelete);
   localStorage.setItem("quotes", JSON.stringify(saveQuotes));
+};
+
+const displaySavedQuotes = () => {
+  searchQuoteShow.empty();
+  saveQuotes.forEach(({ quote, author }) => {
+    searchQuoteShow.append(
+      `<div class="quote-show"><h4 class="author">${author}</h4><p>${quote}</p></div>`
+    );
+  });
 };
 
 const runCode = () => {
   fetchData();
-  $("#quote-btn").click(fetchData);
+  quoteBtn.click(fetchData);
 };
+
+addBtn.click(() => {
+  const currentQuote = quoteText.text();
+  const currentAuthor = authorText.text();
+  if (currentQuote) {
+    const quoteObject = { quote: currentQuote, author: currentAuthor };
+    if (!saveQuotes.some(({ quote }) => quote === currentQuote)) {
+      saveQuotes.push(quoteObject);
+      localStorage.setItem("quotes", JSON.stringify(saveQuotes));
+      displaySavedQuotes();
+    } else {
+      userAlert("Alert", "This Quote is already in your favorite list");
+    }
+  }
+});
+
+deleteBtn.click(() => {
+  const currentQuote = quoteText.text();
+  if (currentQuote) {
+    deleteQuote(currentQuote);
+    displaySavedQuotes();
+  }
+});
+
+deleteAllBtn.click(() => {
+  localStorage.removeItem("quotes");
+  saveQuotes = [];
+  searchQuoteShow.empty();
+});
+
+searchInput.on("input", function () {
+  const searchTerm = searchInput.val().toLowerCase();
+  searchQuoteShow.empty();
+  saveQuotes.forEach(({ quote, author }) => {
+    if (quote.toLowerCase().includes(searchTerm)) {
+      searchQuoteShow.append(
+        `<div class="quote"><h4 class="author">${author}</h4><p>${quote}</p></div>`
+      );
+    }
+  });
+});
+
+displaySavedQuotes();
 
 $(document).ready(runCode);

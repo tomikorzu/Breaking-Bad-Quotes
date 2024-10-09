@@ -8,32 +8,28 @@
     <link rel="stylesheet" href="./src/assets/styles/index.css" />
     <link rel="stylesheet" href="./src/components/styles/loading.css" />
   </head>
-  <body>
-    <header>
+  <body class="global">
+    <header class="header">
       <h1 class="title">Breaking Bad Quotes API</h1>
-      <input
-        type="search"
-        class="input"
-        name=""
-        placeholder="Search saved quotes..."
-      />
-    </header>
-    <main class="main-center">
-      <div class="search-quote-show"></div>
       <div class="container">
-        <div id="author"></div>
-        <div id="quote"></div>
+        <h4 class="author" id="author"></h4>
+        <p id="quote"></p>
       </div>
       <div class="btn-container">
         <button class="btn" id="quote-btn">Next</button>
-        <!-- <button class="btn"><i class="fa-regular fa-star"></i></button> -->
-        <button class="btn">Add</button>
-        <!-- <button class="btn">
-          <i class="fa-solid fa-trash"></i>
-        </button> -->
-        <button class="btn">Delete</button>
-        <button class="btn">Delete all quotes</button>
+        <button class="btn" id="add">Add</button>
+        <button class="btn" id="delete">Delete</button>
       </div>
+    </header>
+    <main class="main-center">
+      <input
+        type="search"
+        class="input input-search"
+        name=""
+        placeholder="Search saved quotes..."
+      />
+      <div class="search-quote-show"></div>
+      <button class="btn" id="delete-all">Delete all quotes</button>
     </main>
     <script type="module" src="./src/main.js"></script>
   </body>
