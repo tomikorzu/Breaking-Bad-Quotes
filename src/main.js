@@ -22,8 +22,9 @@ const fetchData = () => {
 };
 
 const deleteQuote = (quote) => {
-  
-}
+  saveQuotes = saveQuotes.filter((item) => item !== quote);
+  localStorage.setItem("quotes", JSON.stringify(saveQuotes));
+};
 
 const runCode = () => {
   fetchData();
