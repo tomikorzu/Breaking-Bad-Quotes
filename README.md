@@ -1,4 +1,4 @@
-# JQuery Exercise
+# Breaking Bad Quotes API
 
 ## Objective
 
