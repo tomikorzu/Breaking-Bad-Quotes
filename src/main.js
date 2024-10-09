@@ -9,6 +9,7 @@ const searchQuoteShow = $(".search-quote-show");
 const quoteBtn = $("#quote-btn");
 const quoteText = $("#quote");
 const authorText = $("#author");
+const favoriteContainer = $(".favorite-container");
 
 let saveQuotes = JSON.parse(localStorage.getItem("quotes")) || [];
 
@@ -33,15 +34,21 @@ const fetchData = () => {
 const deleteQuote = (quoteToDelete) => {
   saveQuotes = saveQuotes.filter(({ quote }) => quote !== quoteToDelete);
   localStorage.setItem("quotes", JSON.stringify(saveQuotes));
+  displaySavedQuotes();
 };
 
 const displaySavedQuotes = () => {
   searchQuoteShow.empty();
-  saveQuotes.forEach(({ quote, author }) => {
-    searchQuoteShow.append(
-      `<div class="quote-show"><h4 class="author">${author}</h4><p>${quote}</p></div>`
-    );
-  });
+  if (saveQuotes.length === 0) {
+    favoriteContainer.hide();
+  } else {
+    favoriteContainer.show();
+    saveQuotes.forEach(({ quote, author }) => {
+      searchQuoteShow.append(
+        `<div class="quote-show"><h4 class="author">${author}</h4><p>${quote}</p></div>`
+      );
+    });
+  }
 };
 
 const runCode = () => {
@@ -68,7 +75,9 @@ deleteBtn.click(() => {
   const currentQuote = quoteText.text();
   if (currentQuote) {
     deleteQuote(currentQuote);
-    displaySavedQuotes();
+    if (saveQuotes.length === 0) {
+      favoriteContainer.hide();
+    }
   }
 });
 
@@ -76,6 +85,7 @@ deleteAllBtn.click(() => {
   localStorage.removeItem("quotes");
   saveQuotes = [];
   searchQuoteShow.empty();
+  favoriteContainer.hide();
 });
 
 searchInput.on("input", function () {
@@ -88,6 +98,11 @@ searchInput.on("input", function () {
       );
     }
   });
+  if (searchQuoteShow.children().length === 0) {
+    favoriteContainer.hide();
+  } else {
+    favoriteContainer.show();
+  }
 });
 
 displaySavedQuotes();
