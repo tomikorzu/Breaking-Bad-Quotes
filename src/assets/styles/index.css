@@ -167,6 +167,7 @@ button {
   background-color: var(--acept-bg-color);
 }
 .cancel-btn {
+  width: fit-content;
   background-color: var(--alert-bg-color);
   color: var(--alert-text-color);
 }

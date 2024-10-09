@@ -2,7 +2,6 @@ import $ from "jquery";
 import { userAlert } from "./utils/mainFunctions.js";
 
 const addBtn = $("#add");
-const deleteBtn = $("#delete");
 const deleteAllBtn = $("#delete-all");
 const searchInput = $(".input-search");
 const searchQuoteShow = $(".search-quote-show");
@@ -45,10 +44,19 @@ const displaySavedQuotes = () => {
     favoriteContainer.show();
     saveQuotes.forEach(({ quote, author }) => {
       searchQuoteShow.append(
-        `<div class="quote-show"><h4 class="author">${author}</h4><p>${quote}</p></div>`
+        `<div class="quote-show">
+          <h4 class="author">${author}</h4>
+          <p>${quote}</p>
+          <button class="btn delete-quote cancel-btn"><i class="fa-solid fa-trash"></i></button>
+        </div>`
       );
     });
   }
+
+  $(".delete-quote").click(function () {
+    const quoteToDelete = $(this).siblings("p").text();
+    deleteQuote(quoteToDelete);
+  });
 };
 
 const runCode = () => {
@@ -71,16 +79,6 @@ addBtn.click(() => {
   }
 });
 
-deleteBtn.click(() => {
-  const currentQuote = quoteText.text();
-  if (currentQuote) {
-    deleteQuote(currentQuote);
-    if (saveQuotes.length === 0) {
-      favoriteContainer.hide();
-    }
-  }
-});
-
 deleteAllBtn.click(() => {
   localStorage.removeItem("quotes");
   saveQuotes = [];
@@ -94,15 +92,24 @@ searchInput.on("input", function () {
   saveQuotes.forEach(({ quote, author }) => {
     if (quote.toLowerCase().includes(searchTerm)) {
       searchQuoteShow.append(
-        `<div class="quote"><h4 class="author">${author}</h4><p>${quote}</p></div>`
+        `<div class="quote-show">
+          <h4 class="author">${author}</h4>
+          <p>${quote}</p>
+          <button class="btn delete-quote cancel-btn"><i class="fa-solid fa-trash"></i></button>
+        </div>`
       );
     }
   });
   if (searchQuoteShow.children().length === 0) {
-    favoriteContainer.hide();
+    searchQuoteShow.text("No quotes found");
   } else {
     favoriteContainer.show();
   }
+
+  $(".delete-quote").click(function () {
+    const quoteToDelete = $(this).siblings("p").text();
+    deleteQuote(quoteToDelete);
+  });
 });
 
 displaySavedQuotes();
