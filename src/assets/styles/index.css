@@ -77,6 +77,8 @@ header {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  max-height: 300px;
+  overflow-y: auto;
 }
 .quote-show {
   border-left: 5px solid #999;
