@@ -20,7 +20,7 @@
   --despegable-btn-color: #444654;
   --alert-text-color: #fa5e55;
   --alert-text-color-hover: #f2f2f2;
-  --alert-bg-color: #212830;
+  --alert-bg-color: #333;
   --alert-bg-color-hover: #fa5e55;
   --acept-bg-color: #238636;
   --acept-bg-color-hover: #23a03b;
@@ -107,12 +107,6 @@ header {
   gap: 10px;
 }
 
-.div-center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
 button {
   cursor: pointer;
   border: none;
@@ -130,27 +124,6 @@ button {
   flex-direction: row;
   gap: 10px;
 }
-
-/* Forms */
-.form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  padding: 20px;
-  background-color: var(--menu-color);
-  border-radius: 5px;
-}
-.form-title {
-  font-size: 1.75em;
-}
-.inputs-container {
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-  width: 100%;
-}
 .input {
   padding: 12.5px 10px;
   outline: none;
@@ -167,68 +140,6 @@ button {
 }
 .input-search {
   width: 50%;
-}
-.form-btn {
-  margin-top: 5px;
-  width: 100%;
-}
-.already-account-p {
-  font-size: 1em;
-  font-weight: 500;
-}
-.already-account-btn {
-  background-color: transparent;
-  padding: 0;
-  font-size: 1em;
-  margin-left: 5px;
-  color: #ffffff90;
-  font-weight: 500;
-}
-
-/* Blur */
-.back-drop {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  min-height: 100vh;
-  transition: filter 0.4s;
-  z-index: -1;
-}
-.blur {
-  filter: blur(5px);
-  pointer-events: none;
-}
-
-/* Menus to use */
-/* Interactive menus */
-.desplegable-menu {
-  border-radius: 10px;
-  padding: 20px;
-  background-color: var(--menu-color);
-  position: fixed;
-  transform: translate(-50%, 700%);
-  top: 50%;
-  left: 50%;
-  transition: all 0.4s;
-}
-.show-desplegable-menu {
-  transform: translate(-50%, -50%);
-}
-.desplegable-button {
-  top: 15px;
-  left: 15px;
-  position: fixed;
-  border-radius: 100%;
-  padding: 12.5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.4s;
-  background-color: var(--despegable-btn-color);
-  color: var(--text-color);
-  font-size: 1.25em;
 }
 
 /* Only read menus */

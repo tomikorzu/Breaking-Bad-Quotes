@@ -7,7 +7,7 @@
     <link rel="icon" href="favicon.ico" type="image+svg" />
     <link rel="stylesheet" href="./src/assets/styles/index.css" />
   </head>
-  <body class="global">
+  <body class="global fade-in">
     <header class="header">
       <h1 class="title">Breaking Bad Quotes API</h1>
       <div class="container">
@@ -16,8 +16,8 @@
       </div>
       <div class="btn-container">
         <button class="btn" id="quote-btn">Next</button>
-        <button class="btn" id="add">Add</button>
-        <button class="btn" id="delete">Delete</button>
+        <button class="btn accept-btn" id="add">Add</button>
+        <button class="btn cancel-btn" id="delete">Delete</button>
       </div>
     </header>
     <main class="main-center">
@@ -28,7 +28,7 @@
         placeholder="Search saved quotes..."
       />
       <div class="search-quote-show"></div>
-      <button class="btn" id="delete-all">Delete all quotes</button>
+      <button class="btn cancel-btn" id="delete-all">Delete all quotes</button>
     </main>
     <script type="module" src="./src/main.js"></script>
   </body>
